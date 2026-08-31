@@ -1,0 +1,25 @@
+---
+import SectionIntro from './SectionIntro.astro';
+import { testimonials } from '../data/site';
+---
+
+<section class="section testimonials-section">
+  <div class="container">
+    <SectionIntro
+      eyebrow="Kind words"
+      title="The photographs matter. So does how the day feels."
+      copy="Families remember patience, clear communication, and children who were free to be themselves."
+    />
+    <div class="testimonial-grid">
+      {testimonials.map((testimonial) => (
+        <figure>
+          <blockquote>“{testimonial.quote}”</blockquote>
+          <figcaption>
+            <strong>{testimonial.name}</strong>
+            <span>{testimonial.context}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

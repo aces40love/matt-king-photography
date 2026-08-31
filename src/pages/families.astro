@@ -1,0 +1,50 @@
+---
+import SessionPage from '../components/SessionPage.astro';
+import { commonFaqs } from '../data/site';
+import familyMeadow from '../assets/images/family-meadow.webp';
+import heroFamily from '../assets/images/hero-family.webp';
+import familyFive from '../assets/images/family-five.webp';
+import familyAutumn from '../assets/images/family-autumn.webp';
+import familyCandid from '../assets/images/family-candid.jpg';
+
+const faqs = [
+  commonFaqs[1],
+  commonFaqs[2],
+  {
+    question: 'Can grandparents or extended family join us?',
+    answer: 'Absolutely. Extended-family sessions are planned with enough time for the full group, each household, grandparents with grandchildren, and the smaller relationships you want preserved.',
+  },
+  commonFaqs[3],
+];
+---
+
+<SessionPage
+  metaTitle="Memphis Family Photographer | Relaxed Family Portraits"
+  description="Relaxed family photography in Memphis, Munford, and Tipton County with wardrobe guidance, a private 10-acre property, and finished portrait artwork."
+  eyebrow="Family photography · Memphis & West Tennessee"
+  title="Your family does not need to slow down to be remembered."
+  intro="Unhurried family portraits for people who want genuine connection, a little direction, and artwork that keeps this season close."
+  heroImage={familyMeadow}
+  heroAlt="Parents walking through a meadow with their young child"
+  promiseTitle="Easy-going portraits for real family life."
+  promiseCopy="You do not have to arrive perfectly coordinated, keep every child still, or know how to pose. Matt plans the details and gives your family room to feel like itself."
+  benefits={[
+    { title: 'Wardrobe made easier', copy: 'Start with a practical clothing guide, then get personal help refining the pieces and colors you already love.' },
+    { title: 'Children set the pace', copy: 'There is time to explore, reset, laugh, and warm up. The best expression usually arrives after the pressure leaves.' },
+    { title: 'Every relationship matters', copy: 'The full family is only part of the story. Parent-child, siblings, couples, and generations all get space.' },
+    { title: 'Artwork planned for home', copy: 'Choose portraits with purpose and see how finished pieces can fit the rooms where your family actually lives.' },
+  ]}
+  galleryTitle="Connection, without the performance."
+  galleryCopy="A small selection of family portraits created across Matt’s private property and the Greater Memphis area."
+  gallery={[
+    { src: heroFamily, alt: 'Family sitting together beside the water in West Tennessee', position: 'center 43%' },
+    { src: familyFive, alt: 'Family of five standing close together outdoors' },
+    { src: familyAutumn, alt: 'Family of three together during an autumn portrait session' },
+    { src: familyCandid, alt: 'Parents sharing a candid moment with their young child' },
+  ]}
+  quote="Our toddler was in the ‘no pictures’ stage, and within minutes Matt had her smiling beautifully. He is the best photographer we have ever used with our kids."
+  quoteName="The Hefner Family"
+  investmentTitle="Know the approach—and the numbers—before you say yes."
+  investmentCopy="Family sessions are personally planned, and finished artwork is chosen after you see your photographs. Request the current guide for session details, artwork options, and the full range of investment."
+  faqs={faqs}
+/>

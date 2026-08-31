@@ -1,0 +1,56 @@
+---
+import SessionPage from '../components/SessionPage.astro';
+import { commonFaqs } from '../data/site';
+import seniorHorse from '../assets/images/senior-horse.webp';
+import seniorHat from '../assets/images/senior-hat.webp';
+import seniorSuit from '../assets/images/senior-suit.webp';
+import seniorCity from '../assets/images/senior-city.webp';
+import seniorHunter from '../assets/images/senior-hunter.png';
+
+const faqs = [
+  {
+    question: 'How personal can the session be?',
+    answer: 'Very. Horses, hunting, music, sports, gaming, cars, motorcycles, and meaningful family property can all become part of the plan. The point is to photograph who your senior actually is.'
+  },
+  {
+    question: 'How many outfits and locations can we use?',
+    answer: 'That depends on the session selected and the story you want to tell. The planning conversation covers priorities first, then builds a realistic route, wardrobe, and pace around them.'
+  },
+  {
+    question: 'My senior feels awkward in photographs. Is that okay?',
+    answer: 'Completely. Matt gives specific direction without over-posing and keeps the conversation moving. Most seniors settle in quickly once they realize they are not expected to perform.'
+  },
+  commonFaqs[3],
+];
+---
+
+<SessionPage
+  metaTitle="Memphis Senior Photographer | Story-Driven Senior Portraits"
+  description="Personalized high school senior photography across Memphis and West Tennessee, designed around interests, style, meaningful locations, and finished artwork."
+  eyebrow="High school seniors · Memphis & West Tennessee"
+  title="Senior portraits should look like a life—not a template."
+  intro="A story-driven portrait experience shaped around what your senior wears, loves, works at, plays, drives, rides, and wants to remember."
+  heroImage={seniorHorse}
+  heroAlt="High school senior standing beside her horse outdoors"
+  promiseTitle="Their interests are not props. They are the story."
+  promiseCopy="This is a milestone for parents and a statement of identity for seniors. Matt plans enough structure for everyone to feel confident and enough freedom for the photographs to feel honest."
+  benefits={[
+    { title: 'Built from a conversation', copy: 'The session begins with interests, style, locations, and priorities—not a preset pose list.' },
+    { title: 'Direction without stiffness', copy: 'Clear prompts and natural movement help seniors look confident without making the photographs feel over-rehearsed.' },
+    { title: 'More than one side of them', copy: 'Refined, relaxed, adventurous, athletic, rural, or urban—the session can hold more than one part of who they are.' },
+    { title: 'Artwork for both generations', copy: 'Create pieces parents will keep for decades and photographs seniors are proud to share now.' },
+  ]}
+  galleryTitle="Confidence, character, and the things they love."
+  galleryCopy="From downtown texture to open fields and deeply personal hobbies, every setting earns its place."
+  gallery={[
+    { src: seniorHunter, alt: 'High school senior holding a duck after a hunt in a field', position: 'center 38%' },
+    { src: seniorHat, alt: 'High school senior wearing a wide-brim hat outdoors' },
+    { src: seniorSuit, alt: 'High school senior in a black suit outdoors' },
+    { src: seniorCity, alt: 'High school senior photographed in downtown Memphis' },
+  ]}
+  quote="Matt kept us informed every step of the way, helped with wardrobe ideas, and made our girls laugh throughout the entire session."
+  quoteName="Britney Stroud"
+  investmentTitle="Choose the amount of story you want to tell."
+  investmentCopy="Senior session options vary by the time, locations, and variety needed. The current guide explains each experience and the available artwork clearly, so your family can choose with confidence."
+  faqs={faqs}
+/>

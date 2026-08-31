@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Matt King Photography">
+  <rect width="64" height="64" rx="14" fill="#173f35"/>
+  <path d="M16 44V20h5.1l10.8 14.7L42.8 20H48v24h-5.7V29.2L32 43 21.7 29.2V44H16Z" fill="#f7f1e8"/>
+  <circle cx="49" cy="15" r="3" fill="#bc9860"/>
+</svg>

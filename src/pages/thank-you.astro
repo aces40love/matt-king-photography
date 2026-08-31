@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+---
+
+<BaseLayout title="Thank You | Matt King Photography" description="Your portrait session request has been received." noindex={true}>
+  <section class="message-page">
+    <div class="container">
+      <p class="eyebrow">Message received</p>
+      <h1>Thank you for reaching out.</h1>
+      <p class="lede">Matt will review your note and reply personally with the next details. Keep an eye on your texts.</p>
+      <ButtonLink href="/" label="Return home" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .message-page { display: flex; align-items: center; min-height: 65vh; padding-block: var(--section); background: var(--cream); }
+  .message-page .container { max-width: 58rem; }
+  .message-page .button { margin-top: 1.25rem; }
+</style>

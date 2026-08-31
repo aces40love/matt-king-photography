@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Plan Your Portrait Session | Matt King Photography"
+  description="Request current availability and the investment guide for a family, child, or senior portrait session with Matt King Photography."
+>
+  <section class="contact-hero">
+    <div class="container contact-hero__inner">
+      <p class="eyebrow">Start here</p>
+      <h1>Tell me who you would love photographed.</h1>
+      <p class="lede">Share a few details below. Matt will respond personally with current availability, session options, and the complete investment guide.</p>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container contact-grid">
+      <aside>
+        <p class="eyebrow">Prefer to text?</p>
+        <h2>A real person answers.</h2>
+        <p>Text Matt directly at <a href={site.smsHref}>{site.phoneDisplay}</a>. Include your name and the type of session you are considering.</p>
+        <ButtonLink href={site.smsHref} label="Text Matt" variant="outline" />
+
+        <div class="contact-details">
+          <p><strong>Studio</strong><span>{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postalCode}</span></p>
+          <p><strong>Hours</strong><span>Open by appointment</span></p>
+          <p><strong>Serving</strong><span>Greater Memphis, Tipton County, Shelby County, Fayette County, and West Tennessee</span></p>
+        </div>
+      </aside>
+
+      <div class="form-wrap">
+        <form
+          name="portrait-inquiry"
+          method="POST"
+          action="/thank-you/"
+          data-netlify="true"
+          netlify-honeypot="company"
+        >
+          <input type="hidden" name="form-name" value="portrait-inquiry" />
+          <p class="honeypot" aria-hidden="true">
+            <label>Do not fill this out if you are human: <input name="company" type="text" autocomplete="off" tabindex="-1" /></label>
+          </p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Mobile number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="session">Session type</label>
+              <select id="session" name="session" required>
+                <option value="">Choose one</option>
+                <option>Family</option>
+                <option>Extended family</option>
+                <option>Children or siblings</option>
+                <option>High school senior</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="timing">Ideal timing</label>
+              <select id="timing" name="timing" required>
+                <option value="">Choose one</option>
+                <option>Next available</option>
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Fall</option>
+                <option>Winter or holiday season</option>
+                <option>Just gathering information</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Who would you love photographed?</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell Matt about your people, interests, or any questions you have."></textarea>
+          </div>
+
+          <label class="consent">
+            <input id="consent" name="consent" type="checkbox" required />
+            <span>I agree that Matt King Photography may contact me about this inquiry by call or text. Message and data rates may apply. I can opt out at any time.</span>
+          </label>
+
+          <button type="submit" class="submit-button">
+            <span>Send my session request</span>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 6l4 4-4 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+          </button>
+          <p class="form-note">Your information is used only to respond to this request. Read the <a href="/privacy/">privacy note</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-section">
+    <div class="container next-grid">
+      <div><span>01</span><h3>Matt replies</h3><p>You receive current availability, session options, and pricing—usually by text.</p></div>
+      <div><span>02</span><h3>You ask anything</h3><p>Talk through your family, timing, concerns, and what you hope to create.</p></div>
+      <div><span>03</span><h3>Decide without pressure</h3><p>If it feels right, choose a date and begin planning. An inquiry never obligates you to book.</p></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-hero { padding-block: clamp(5rem, 10vw, 9rem); background: var(--cream); }
+  .contact-hero__inner { max-width: 72rem; }
+  .contact-hero h1 { max-width: 12ch; font-size: clamp(4rem, 8vw, 7.2rem); }
+  .contact-hero .lede { max-width: 47rem; }
+
+  .contact-section { background: var(--paper); }
+  .contact-grid { display: grid; grid-template-columns: .7fr 1.3fr; align-items: start; gap: clamp(3rem, 10vw, 10rem); }
+  .contact-grid aside { position: sticky; top: 2rem; color: var(--ink-soft); }
+  .contact-grid aside h2 { color: var(--ink); }
+  .contact-grid aside > p a { color: var(--ink); font-weight: 720; }
+  .contact-grid aside .button { margin-top: 1rem; }
+  .contact-details { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  .contact-details p { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; font-size: .9rem; }
+  .contact-details strong { color: var(--ink); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+
+  .form-wrap { padding: clamp(1.5rem, 4vw, 3.5rem); background: var(--cream); }
+  form { display: grid; gap: 1.4rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .field { display: flex; flex-direction: column; gap: .45rem; }
+  .field label { color: var(--ink); font-size: .72rem; font-weight: 730; letter-spacing: .06em; text-transform: uppercase; }
+  .field input, .field select, .field textarea { width: 100%; border: 1px solid rgba(32, 35, 31, .24); border-radius: 0; background: var(--paper); }
+  .field input, .field select { height: 3.5rem; padding: 0 .9rem; }
+  .field textarea { min-height: 10rem; padding: .9rem; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--forest); outline-offset: 1px; }
+  .honeypot { position: absolute; left: -10000px; }
+  .consent { display: grid; grid-template-columns: 1.2rem 1fr; align-items: start; gap: .75rem; color: var(--ink-soft); font-size: .78rem; line-height: 1.55; }
+  .consent input { width: 1.1rem; height: 1.1rem; margin-top: .2rem; accent-color: var(--forest); }
+  .submit-button { display: inline-flex; align-items: center; justify-content: space-between; min-height: 3.75rem; padding: .9rem 1.35rem; color: white; background: var(--forest); border: 1px solid var(--forest); cursor: pointer; font-size: .72rem; font-weight: 760; letter-spacing: .09em; text-transform: uppercase; transition: color 180ms ease, background 180ms ease; }
+  .submit-button svg { width: 1.25rem; }
+  .submit-button:hover { color: var(--ink); background: transparent; }
+  .form-note { margin: 0; color: var(--ink-soft); font-size: .72rem; }
+
+  .next-section { padding-block: clamp(4rem, 7vw, 6rem); color: white; background: var(--forest-deep); }
+  .next-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .next-grid > div { padding: 0 clamp(1.5rem, 4vw, 3.5rem); border-right: 1px solid rgba(255, 255, 255, .15); }
+  .next-grid > div:first-child { padding-left: 0; }
+  .next-grid > div:last-child { padding-right: 0; border-right: 0; }
+  .next-grid span { display: block; margin-bottom: 2.5rem; color: #d9c9b1; font-size: .7rem; font-weight: 750; }
+  .next-grid p { color: rgba(255, 255, 255, .65); font-size: .9rem; }
+
+  @media (max-width: 820px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-grid aside { position: static; }
+    .next-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .next-grid > div, .next-grid > div:first-child, .next-grid > div:last-child { padding: 0 0 2.5rem; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .15); }
+    .next-grid > div:last-child { padding-bottom: 0; border-bottom: 0; }
+  }
+  @media (max-width: 560px) {
+    .field-row { grid-template-columns: 1fr; }
+    .form-wrap { margin-inline: calc(var(--gutter) * -1); }
+  }
+</style>

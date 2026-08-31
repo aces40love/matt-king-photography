@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="Privacy | Matt King Photography" description="How Matt King Photography uses information submitted through this website.">
+  <article class="legal-page">
+    <div class="container">
+      <p class="eyebrow">Privacy</p>
+      <h1>A short, plain-language privacy note.</h1>
+      <p class="lede">Information submitted through this website is used to respond to your photography inquiry and provide the details you request.</p>
+
+      <h2>What we collect</h2>
+      <p>The inquiry form asks for your name, mobile number, session interest, preferred timing, and any message you choose to share.</p>
+
+      <h2>How we use it</h2>
+      <p>Matt King Photography uses this information to answer your inquiry, discuss availability and services, and communicate about a session you choose to schedule. Information is not sold.</p>
+
+      <h2>Calls and texts</h2>
+      <p>Submitting the inquiry form gives Matt King Photography permission to reply about that inquiry by call or text. Message and data rates may apply. You may ask to stop receiving messages at any time.</p>
+
+      <h2>Questions or deletion requests</h2>
+      <p>Call or text <a href={site.phoneHref}>{site.phoneDisplay}</a> to ask what information is held or request its deletion.</p>
+
+      <p class="updated">Last updated August 31, 2026.</p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-page { padding-block: var(--section); background: var(--cream); }
+  .legal-page .container { max-width: 58rem; }
+  .legal-page h1 { max-width: 12ch; }
+  .legal-page h2 { margin-top: 3.5rem; font-size: clamp(2rem, 4vw, 3rem); }
+  .legal-page p { color: var(--ink-soft); }
+  .legal-page a { color: var(--ink); font-weight: 720; }
+  .legal-page .updated { margin-top: 4rem; font-size: .78rem; }
+</style>

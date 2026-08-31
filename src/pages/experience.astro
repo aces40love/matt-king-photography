@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import FaqList from '../components/FaqList.astro';
+import InquiryBand from '../components/InquiryBand.astro';
+import Process from '../components/Process.astro';
+import ProofBar from '../components/ProofBar.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import { commonFaqs } from '../data/site';
+import familyDiptych from '../assets/images/family-diptych.jpg';
+import familyFive from '../assets/images/family-five.webp';
+import childSisters from '../assets/images/child-sisters.webp';
+---
+
+<BaseLayout
+  title="The Portrait Experience | Matt King Photography"
+  description="A guided, full-service portrait experience for Memphis families—from wardrobe and location planning through relaxed photography and finished artwork."
+>
+  <section class="experience-hero">
+    <div class="container experience-hero__grid">
+      <div>
+        <p class="eyebrow">The full experience</p>
+        <h1>Everything handled. Nothing hurried.</h1>
+        <p class="lede">A thoughtful path from “we should update our portraits” to finished artwork hanging in the place you call home.</p>
+        <ButtonLink href="/contact/" label="Start the conversation" />
+      </div>
+      <div class="experience-hero__image">
+        <Image src={familyDiptych} alt="Parent and child sharing a playful moment during their session" widths={[720, 1080, 1440]} sizes="(max-width: 820px) 100vw, 52vw" format="webp" quality={84} loading="eager" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <ProofBar />
+
+  <section class="section handled-section">
+    <div class="container">
+      <SectionIntro
+        eyebrow="What Matt handles"
+        title="The details that usually keep portraits on the someday list."
+        copy="The best full-service experience does not add more decisions to your week. It gives each decision a clear time, place, and guide."
+      />
+      <div class="handled-grid">
+        <article><span>01</span><h3>Wardrobe</h3><p>A practical clothing guide and personal feedback help everyone feel coordinated without looking matched.</p></article>
+        <article><span>02</span><h3>Location</h3><p>Choose the private property, downtown texture, or a meaningful place that supports your story.</p></article>
+        <article><span>03</span><h3>Preparation</h3><p>Simple reminders arrive when they are useful, so the session never sneaks up on you.</p></article>
+        <article><span>04</span><h3>Direction</h3><p>Matt guides posture, light, and connection while leaving room for real expression and movement.</p></article>
+        <article><span>05</span><h3>Selection</h3><p>See the strongest photographs together and get clear help narrowing them to the ones that matter.</p></article>
+        <article><span>06</span><h3>Artwork</h3><p>Compare sizes and finishes before choosing pieces designed for the rooms where you will enjoy them.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <Process
+    title="Four steps, one point of contact."
+    copy="You work directly with Matt from the first conversation to the final artwork decision."
+  />
+
+  <section class="section artwork-detail" id="artwork">
+    <div class="container artwork-detail__grid">
+      <div class="artwork-detail__scene">
+        <div class="artwork-detail__frame">
+          <Image src={familyFive} alt="Family portrait prepared as framed wall art" widths={[560, 840, 1120]} sizes="(max-width: 820px) 80vw, 42vw" format="webp" quality={82} loading="lazy" />
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Artwork, designed with you</p>
+        <h2>See the finished piece before it becomes a purchase.</h2>
+        <p class="lede">Portraits are easier to choose when you can picture where they belong.</p>
+        <p>At the reveal, Matt helps you compare photographs, group images that tell a fuller story, and select sizes that make sense for your space. Available pieces may include framed wall portraits, statement artwork, and heirloom keepsakes.</p>
+        <p>You choose only what you love. There is no need to decide on finished artwork before seeing the photographs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section investment-section">
+    <div class="container investment-grid">
+      <SectionIntro
+        eyebrow="Investment"
+        title="Clarity before commitment. Choice after the session."
+        copy="Pricing should help you decide whether the experience is right for your family—not force you into a sales conversation just to learn the basics."
+      />
+      <div class="investment-list">
+        <article>
+          <p>Planning &amp; session</p>
+          <span>Includes personal planning, wardrobe guidance, location design, photography, and a guided reveal appointment.</span>
+        </article>
+        <article>
+          <p>Portrait artwork</p>
+          <span>Selected separately after the reveal, with options for different rooms, stories, and priorities.</span>
+        </article>
+        <article>
+          <p>Current pricing</p>
+          <span>Receive the complete session and artwork guide before booking. No surprises and no pressure to reserve.</span>
+        </article>
+        <ButtonLink href="/contact/" label="Request the current guide" variant="outline" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section reassurance-section">
+    <div class="container reassurance-grid">
+      <div>
+        <Image src={childSisters} alt="Two sisters sharing a quiet moment during their portrait session" widths={[640, 900, 1200]} sizes="(max-width: 820px) 100vw, 48vw" format="webp" quality={82} loading="lazy" />
+      </div>
+      <div>
+        <p class="eyebrow">The short version</p>
+        <h2>You do not have to be good at being photographed.</h2>
+        <p class="lede">You only have to show up with the people you love.</p>
+        <p>Matt will tell you where to stand, keep the children engaged, notice when everyone needs a reset, and find the moments that feel natural. That is the work.</p>
+      </div>
+    </div>
+  </section>
+
+  <FaqList faqs={commonFaqs} />
+  <InquiryBand />
+</BaseLayout>
+
+<style>
+  .experience-hero { background: var(--cream); overflow: hidden; }
+  .experience-hero__grid { display: grid; grid-template-columns: .88fr 1.12fr; align-items: center; min-height: min(48rem, calc(100svh - 7.75rem)); }
+  .experience-hero__grid > div:first-child { padding: 5rem clamp(2rem, 7vw, 7rem) 5rem 0; }
+  .experience-hero__grid h1 { font-size: clamp(4rem, 7.2vw, 7rem); }
+  .experience-hero__grid .button { margin-top: 1.25rem; }
+  .experience-hero__image { align-self: stretch; margin-right: calc((100vw - min(100vw - (var(--gutter) * 2), var(--container))) / -2); }
+  .experience-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .handled-section { background: var(--paper); }
+  .handled-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .handled-grid article { min-height: 19rem; padding: clamp(1.75rem, 4vw, 3rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .handled-grid article > span { display: block; margin-bottom: 4rem; color: var(--brass); font-size: .7rem; font-weight: 750; letter-spacing: .1em; }
+  .handled-grid p { color: var(--ink-soft); font-size: .92rem; }
+
+  .artwork-detail { background: var(--cream); }
+  .artwork-detail__grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: clamp(3rem, 9vw, 9rem); }
+  .artwork-detail__scene { display: flex; align-items: center; justify-content: center; min-height: clamp(34rem, 50vw, 48rem); padding: 10%; background: #d7d3cb; box-shadow: inset 0 0 6rem rgba(46, 39, 31, .08); }
+  .artwork-detail__frame { padding: 3%; background: #eee9e1; border: clamp(.7rem, 1.2vw, 1.15rem) solid #28261f; box-shadow: 0 1.5rem 2.5rem rgba(35, 29, 23, .2); }
+  .artwork-detail__frame img { aspect-ratio: 1.4; object-fit: cover; }
+  .artwork-detail__grid > div:last-child { color: var(--ink-soft); }
+  .artwork-detail__grid h2 { color: var(--ink); }
+
+  .investment-section { background: var(--sand); }
+  .investment-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 9vw, 9rem); }
+  .investment-grid .section-intro { margin: 0; }
+  .investment-list { border-top: 1px solid var(--line); }
+  .investment-list article { display: grid; grid-template-columns: .7fr 1.3fr; padding-block: 1.75rem; gap: 2rem; border-bottom: 1px solid var(--line); }
+  .investment-list article p { font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
+  .investment-list article span { color: var(--ink-soft); font-size: .92rem; }
+  .investment-list .button { margin-top: 2rem; }
+
+  .reassurance-section { background: var(--paper); }
+  .reassurance-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 9vw, 9rem); }
+  .reassurance-grid img { width: 100%; max-height: 46rem; object-fit: cover; }
+  .reassurance-grid > div:last-child { color: var(--ink-soft); }
+  .reassurance-grid h2 { color: var(--ink); }
+
+  @media (max-width: 820px) {
+    .experience-hero__grid, .artwork-detail__grid, .investment-grid, .reassurance-grid { grid-template-columns: 1fr; }
+    .experience-hero__grid > div:first-child { padding: 4.5rem 0; }
+    .experience-hero__image { min-height: 34rem; margin-inline: calc(var(--gutter) * -1); }
+    .handled-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .handled-grid { grid-template-columns: 1fr; }
+    .handled-grid article { min-height: auto; }
+    .handled-grid article > span { margin-bottom: 2.5rem; }
+    .investment-list article { grid-template-columns: 1fr; gap: .3rem; }
+  }
+</style>

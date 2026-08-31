@@ -1,0 +1,40 @@
+---
+import SectionIntro from './SectionIntro.astro';
+
+interface Step {
+  title: string;
+  copy: string;
+}
+
+interface Props {
+  title?: string;
+  copy?: string;
+  steps?: Step[];
+}
+
+const {
+  title = 'A clear plan for portraits you will live with.',
+  copy = 'You never have to guess what happens next. Matt guides the decisions, keeps the pace relaxed, and makes sure your photographs become something tangible.',
+  steps = [
+    { title: 'Plan', copy: 'Talk through who you love, what matters now, wardrobe, location, and where the finished artwork may live.' },
+    { title: 'Photograph', copy: 'Enjoy an unrushed session built around real personalities—not forced smiles or a rigid shot list.' },
+    { title: 'Choose', copy: 'See the photographs together and select the images and artwork that feel most like your family.' },
+    { title: 'Enjoy', copy: 'Receive finished pieces designed to be seen every day, not forgotten in a camera roll.' },
+  ],
+} = Astro.props;
+---
+
+<section class="section process-section">
+  <div class="container">
+    <SectionIntro eyebrow="The experience" title={title} copy={copy} />
+    <ol class="process-grid">
+      {steps.map((step, index) => (
+        <li>
+          <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <h3>{step.title}</h3>
+          <p>{step.copy}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

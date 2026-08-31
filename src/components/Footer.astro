@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../assets/images/logo-mark.png';
+import { nav, site } from '../data/site';
+
+const year = new Date().getFullYear();
+const address = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Image src={mark} alt="" width={88} loading="lazy" />
+      <p class="footer-kicker">Client focused. Jesus driven.</p>
+      <p>Natural portrait photography and finished artwork for families across Greater Memphis and West Tennessee.</p>
+    </div>
+
+    <div>
+      <p class="footer-heading">Explore</p>
+      <ul class="footer-links">
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-heading">Visit &amp; connect</p>
+      <address>
+        <a href="https://maps.google.com/?q=38+N+Tipton+St+Munford+TN+38058" target="_blank" rel="noopener noreferrer">{address}</a>
+        <span>Open by appointment</span>
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      </address>
+    </div>
+
+    <div>
+      <p class="footer-heading">Follow the story</p>
+      <ul class="footer-links">
+        <li><a href={site.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href={site.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href={site.social.vip} target="_blank" rel="noopener noreferrer">VIP community</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {year} Matt King Photography</p>
+    <div>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Plan your session</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,26 @@
+---
+import ButtonLink from './ButtonLink.astro';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  copy?: string;
+}
+
+const {
+  eyebrow = 'Your people. Your season. Your walls.',
+  title = 'Ready to make this one last?',
+  copy = 'Tell Matt who you would love photographed. You will receive current availability, the investment guide, and a simple next step—without pressure to book.',
+} = Astro.props;
+---
+
+<section class="inquiry-band">
+  <div class="container inquiry-band__inner">
+    <div>
+      <p class="eyebrow eyebrow--light">{eyebrow}</p>
+      <h2>{title}</h2>
+      <p>{copy}</p>
+    </div>
+    <ButtonLink href="/contact/" label="Plan your session" variant="light" />
+  </div>
+</section>

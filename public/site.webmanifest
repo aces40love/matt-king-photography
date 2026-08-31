@@ -1,0 +1,16 @@
+{
+  "name": "Matt King Photography",
+  "short_name": "MKP",
+  "description": "Guided family, child, and senior portrait photography in West Tennessee.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f1ea",
+  "theme_color": "#173f35",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

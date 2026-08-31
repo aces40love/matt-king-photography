@@ -1,0 +1,144 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from './ButtonLink.astro';
+import FaqList from './FaqList.astro';
+import InquiryBand from './InquiryBand.astro';
+import Process from './Process.astro';
+import ProofBar from './ProofBar.astro';
+import SectionIntro from './SectionIntro.astro';
+
+interface Item {
+  title: string;
+  copy: string;
+}
+
+interface GalleryItem {
+  src: ImageMetadata;
+  alt: string;
+  position?: string;
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  metaTitle: string;
+  description: string;
+  eyebrow: string;
+  title: string;
+  intro: string;
+  heroImage: ImageMetadata;
+  heroAlt: string;
+  promiseTitle: string;
+  promiseCopy: string;
+  benefits: Item[];
+  galleryTitle: string;
+  galleryCopy: string;
+  gallery: GalleryItem[];
+  quote: string;
+  quoteName: string;
+  investmentTitle: string;
+  investmentCopy: string;
+  faqs: Faq[];
+}
+
+const props = Astro.props;
+---
+
+<BaseLayout title={props.metaTitle} description={props.description}>
+  <section class="session-hero">
+    <div class="container session-hero__grid">
+      <div class="session-hero__content">
+        <p class="eyebrow">{props.eyebrow}</p>
+        <h1>{props.title}</h1>
+        <p class="lede">{props.intro}</p>
+        <div class="button-row">
+          <ButtonLink href="/contact/" label="Check availability" />
+          <ButtonLink href="#portfolio" label="See the work" variant="text" />
+        </div>
+      </div>
+      <div class="session-hero__image">
+        <Image
+          src={props.heroImage}
+          alt={props.heroAlt}
+          widths={[640, 900, 1200, 1600]}
+          sizes="(max-width: 820px) 100vw, 55vw"
+          format="webp"
+          quality={84}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <ProofBar />
+
+  <section class="section promise-section">
+    <div class="container promise-grid">
+      <SectionIntro eyebrow="What this feels like" title={props.promiseTitle} copy={props.promiseCopy} />
+      <div class="benefit-grid">
+        {props.benefits.map((benefit, index) => (
+          <article>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section session-gallery" id="portfolio">
+    <div class="container">
+      <SectionIntro eyebrow="Selected work" title={props.galleryTitle} copy={props.galleryCopy} />
+      <div class="gallery-grid">
+        {props.gallery.map((item, index) => (
+          <figure class:list={[index === 0 && 'gallery-grid__wide']}>
+            <Image
+              src={item.src}
+              alt={item.alt}
+              widths={[420, 720, 1080, 1440]}
+              sizes={index === 0 ? '(max-width: 760px) 100vw, 66vw' : '(max-width: 760px) 100vw, 33vw'}
+              format="webp"
+              quality={82}
+              loading="lazy"
+              style={item.position ? `object-position: ${item.position}` : undefined}
+            />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-panel">
+    <div class="container quote-panel__inner">
+      <span aria-hidden="true">“</span>
+      <blockquote>{props.quote}</blockquote>
+      <p>{props.quoteName}</p>
+    </div>
+  </section>
+
+  <Process />
+
+  <section class="section investment-callout">
+    <div class="container investment-callout__inner">
+      <div>
+        <p class="eyebrow">Investment, explained first</p>
+        <h2>{props.investmentTitle}</h2>
+      </div>
+      <div>
+        <p>{props.investmentCopy}</p>
+        <p>You will receive current session and artwork pricing before making a booking decision.</p>
+        <ButtonLink href="/contact/" label="Request the investment guide" variant="outline" />
+      </div>
+    </div>
+  </section>
+
+  <FaqList faqs={props.faqs} />
+  <InquiryBand />
+</BaseLayout>

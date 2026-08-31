@@ -1,0 +1,53 @@
+---
+import SessionPage from '../components/SessionPage.astro';
+import { commonFaqs } from '../data/site';
+import childGirl from '../assets/images/child-girl.webp';
+import childBoy from '../assets/images/child-boy.webp';
+import childSisters from '../assets/images/child-sisters.webp';
+import childChair from '../assets/images/child-chair.png';
+import childBrothers from '../assets/images/child-brothers.png';
+
+const faqs = [
+  commonFaqs[1],
+  {
+    question: 'What ages do you photograph?',
+    answer: 'Child sessions are designed around personality rather than a narrow age range—from a newly independent toddler to siblings who are suddenly not so little anymore.'
+  },
+  {
+    question: 'Can siblings be photographed together?',
+    answer: 'Yes. Matt photographs siblings together and individually so you leave with both their shared connection and a portrait that is entirely each child’s own.'
+  },
+  commonFaqs[3],
+];
+---
+
+<SessionPage
+  metaTitle="Memphis Child Photographer | Natural Children’s Portraits"
+  description="Natural child photography for Memphis and Tipton County families, with patient guidance, a private outdoor property, and portraits full of personality."
+  eyebrow="Children’s portraits · Memphis & Tipton County"
+  title="Remember who they are—not just how little they were."
+  intro="Patient, playful portraits that let real smiles, strong opinions, quiet curiosity, and all the little details of childhood come through."
+  heroImage={childGirl}
+  heroAlt="Young girl smiling during her outdoor portrait session"
+  promiseTitle="No command to smile. No race against the clock."
+  promiseCopy="Children give their best expressions when they feel safe, seen, and free to move. Matt has spent more than 20 years learning when to direct, when to play, and when to simply wait."
+  benefits={[
+    { title: 'Personality first', copy: 'The goal is not a generic perfect-child pose. It is the grin, glance, movement, or quiet expression that is unmistakably theirs.' },
+    { title: 'Patience built in', copy: 'Shy, energetic, silly, serious, or all four in ten minutes—there is room for the whole child.' },
+    { title: 'A property made for play', copy: 'Private fields, paths, trees, and open space give children something to do and remove the feeling of an audience.' },
+    { title: 'Milestones made tangible', copy: 'Choose framed portraits and heirloom pieces that turn this age into part of your family’s everyday landscape.' },
+  ]}
+  galleryTitle="The expressions you know by heart."
+  galleryCopy="Individual portraits, siblings, and the small in-between moments that parents notice most."
+  gallery={[
+    { src: childSisters, alt: 'Two sisters standing close together outdoors' },
+    { src: childBoy, alt: 'Young boy smiling during an outdoor child portrait session' },
+    { src: childChair, alt: 'Toddler standing on a vintage chair in a sunlit field' },
+    { src: childBrothers, alt: 'Brothers photographed in black and white with their parents behind them' },
+  ]}
+  quote="Matt was flexible with everything our two-year-old threw his way. If you want someone skilled who can roll with the punches, this is where you find him."
+  quoteName="Aubrey Tims"
+  investmentTitle="Choose the portraits after you fall in love with them."
+  investmentCopy="Your session includes personal planning and a guided reveal. After viewing the finished photographs, you choose the artwork and images that matter most—without committing to a one-size-fits-all package first."
+  faqs={faqs}
+/>

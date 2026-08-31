@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-wordmark.png';
+import { nav, site } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header" data-header>
+  <div class="announcement">
+    <div class="container announcement__inner">
+      <p>Serving Greater Memphis &amp; West Tennessee since {site.established}</p>
+      <a href={site.phoneHref} aria-label={`Call Matt at ${site.phoneDisplay}`}>
+        Call Matt {site.phoneDisplay}
+      </a>
+    </div>
+  </div>
+  <div class="container nav-shell">
+    <a class="brand" href="/" aria-label="Matt King Photography home">
+      <Image src={logo} alt="Matt King Photography" width={232} loading="eager" />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+      <span class="menu-toggle__label">Menu</span>
+      <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-menu>
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a class="nav-cta" href="/contact/">Plan your session</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  const menuIsOpen = () => toggle?.getAttribute('aria-expanded') === 'true';
+
+  const getMenuFocusables = () => {
+    const menuLinks = menu ? Array.from(menu.querySelectorAll<HTMLElement>('a[href]')) : [];
+    return toggle ? [toggle, ...menuLinks] : menuLinks;
+  };
+
+  const closeMenu = (restoreFocus = false) => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    if (restoreFocus) toggle?.focus();
+  };
+
+  const openMenu = () => {
+    toggle?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+    window.requestAnimationFrame(() => getMenuFocusables()[1]?.focus());
+  };
+
+  toggle?.addEventListener('click', () => {
+    if (menuIsOpen()) closeMenu();
+    else openMenu();
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
+  window.addEventListener('keydown', (event) => {
+    if (!menuIsOpen()) return;
+
+    if (event.key === 'Escape') {
+      closeMenu(true);
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusables = getMenuFocusables();
+    const first = focusables[0];
+    const last = focusables.at(-1);
+    const active = document.activeElement as HTMLElement | null;
+
+    if (!active || !focusables.includes(active)) {
+      event.preventDefault();
+      (event.shiftKey ? last : first)?.focus();
+    } else if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1020 && menuIsOpen()) closeMenu();
+  });
+</script>

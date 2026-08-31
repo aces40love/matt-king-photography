@@ -1,0 +1,29 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'light' | 'outline' | 'text';
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'primary',
+  external = false,
+  class: className = '',
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['button', `button--${variant}`, className]}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <span>{label}</span>
+  <svg aria-hidden="true" viewBox="0 0 20 20">
+    <path d="M4 10h11M11 6l4 4-4 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+  </svg>
+</a>

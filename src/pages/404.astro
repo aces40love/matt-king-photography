@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+---
+
+<BaseLayout title="Page Not Found | Matt King Photography" description="The requested page could not be found." noindex={true}>
+  <section class="message-page">
+    <div class="container">
+      <p class="eyebrow">404 · Page not found</p>
+      <h1>This moment seems to have moved on.</h1>
+      <p class="lede">The page may have a new home. Start again or send Matt a note if you need a hand.</p>
+      <div class="button-row">
+        <ButtonLink href="/" label="Return home" />
+        <ButtonLink href="/contact/" label="Contact Matt" variant="outline" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .message-page { display: flex; align-items: center; min-height: 65vh; padding-block: var(--section); background: var(--cream); }
+  .message-page .container { max-width: 64rem; }
+  .message-page .button-row { margin-top: 1.5rem; }
+</style>

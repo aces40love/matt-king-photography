@@ -1,0 +1,29 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+.netlify/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local research outputs. Keep only the aggregate summary in Git.
+research/competitor-landscape/data/candidate_domains.csv
+research/competitor-landscape/data/competitors.csv
+research/competitor-landscape/data/crawl_all.csv
+research/competitor-landscape/data/discovery_queries.csv
+research/competitor-landscape/data/web_discovery.ndjson
+
+# Unused source portraits retained locally for future editing.
+src/assets/images/child-field.jpg
+src/assets/images/child-sisters.jpg
+src/assets/images/child-walkway.jpg
+src/assets/images/family-five.png
+src/assets/images/senior-city.jpg
+src/assets/images/senior-field.jpg
+src/assets/images/senior-horse.jpg

@@ -1,0 +1,98 @@
+{
+  "candidate_domains": 1375,
+  "categories": {
+    "children": 789,
+    "family": 1046,
+    "fine_art": 260,
+    "full_service": 344,
+    "newborn_maternity": 752,
+    "senior": 509
+  },
+  "generated_at_utc": "2026-08-31T23:19:52.540204+00:00",
+  "live_static_html": 1178,
+  "medians": {
+    "homepage_response_ms": 453,
+    "initial_html_bytes": 202444,
+    "static_image_tag_count": 15
+  },
+  "platforms": {
+    "Format": 4,
+    "Other/unknown": 109,
+    "PhotoBiz": 58,
+    "Pixieset": 3,
+    "ShootProof": 1,
+    "Shopify": 4,
+    "Showit": 311,
+    "SmugMug": 6,
+    "Squarespace": 258,
+    "Webflow": 4,
+    "Wix": 114,
+    "WordPress": 257,
+    "Zenfolio": 23
+  },
+  "rejection_reasons": {
+    "challenge_or_parked": 12,
+    "directory_education_or_stock": 1,
+    "no_business_evidence": 13,
+    "not_live_static_html": 197
+  },
+  "relevant_live_competitors": 1152,
+  "signal_prevalence": {
+    "has_about": {
+      "count": 548,
+      "percent": 47.6
+    },
+    "has_action_cta": {
+      "count": 1107,
+      "percent": 96.1
+    },
+    "has_booking": {
+      "count": 455,
+      "percent": 39.5
+    },
+    "has_faq": {
+      "count": 212,
+      "percent": 18.4
+    },
+    "has_full_service_products": {
+      "count": 486,
+      "percent": 42.2
+    },
+    "has_gallery": {
+      "count": 834,
+      "percent": 72.4
+    },
+    "has_local_seo_signal": {
+      "count": 899,
+      "percent": 78.0
+    },
+    "has_pricing_language": {
+      "count": 670,
+      "percent": 58.2
+    },
+    "has_process": {
+      "count": 464,
+      "percent": 40.3
+    },
+    "has_schema_local_business": {
+      "count": 449,
+      "percent": 39.0
+    },
+    "has_testimonials": {
+      "count": 449,
+      "percent": 39.0
+    },
+    "has_viewport": {
+      "count": 1113,
+      "percent": 96.6
+    },
+    "has_visible_price": {
+      "count": 130,
+      "percent": 11.3
+    },
+    "uses_https": {
+      "count": 1141,
+      "percent": 99.0
+    }
+  }
+}
