@@ -5,6 +5,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
+import { withBase } from '../utils/sitePath';
 
 interface Props {
   title: string;
@@ -23,7 +24,8 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const socialImage = new URL(image, Astro.site);
+const siteRoot = new URL(withBase('/'), Astro.site);
+const socialImage = new URL(withBase(image), Astro.site);
 const fullAddress = {
   '@type': 'PostalAddress',
   streetAddress: site.address.street,
@@ -36,10 +38,10 @@ const fullAddress = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'ProfessionalService'],
-  '@id': `${Astro.site}#business`,
+  '@id': `${siteRoot.toString()}#business`,
   name: site.name,
-  url: Astro.site?.toString(),
-  logo: new URL('/favicon.svg', Astro.site).toString(),
+  url: siteRoot.toString(),
+  logo: new URL(withBase('/favicon.svg'), Astro.site).toString(),
   image: socialImage.toString(),
   telephone: '+19013593064',
   foundingDate: site.established,
@@ -64,8 +66,8 @@ const schema = {
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="manifest" href={withBase('/site.webmanifest')} />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />

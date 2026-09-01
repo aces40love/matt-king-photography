@@ -2,9 +2,11 @@
 import { Image } from 'astro:assets';
 import mark from '../assets/images/logo-mark.png';
 import { nav, site } from '../data/site';
+import { withBase } from '../utils/sitePath';
 
 const year = new Date().getFullYear();
 const address = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
+const navItems = nav.map((item) => ({ ...item, href: withBase(item.href) }));
 ---
 
 <footer class="site-footer">
@@ -18,8 +20,8 @@ const address = `${site.address.street}, ${site.address.city}, ${site.address.re
     <div>
       <p class="footer-heading">Explore</p>
       <ul class="footer-links">
-        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        <li><a href="/contact/">Contact</a></li>
+        {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href={withBase('/contact/')}>Contact</a></li>
       </ul>
     </div>
 
@@ -44,8 +46,8 @@ const address = `${site.address.street}, ${site.address.city}, ${site.address.re
   <div class="container footer-bottom">
     <p>© {year} Matt King Photography</p>
     <div>
-      <a href="/privacy/">Privacy</a>
-      <a href="/contact/">Plan your session</a>
+      <a href={withBase('/privacy/')}>Privacy</a>
+      <a href={withBase('/contact/')}>Plan your session</a>
     </div>
   </div>
 </footer>

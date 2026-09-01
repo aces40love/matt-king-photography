@@ -2,8 +2,10 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/images/logo-wordmark.png';
 import { nav, site } from '../data/site';
+import { withBase } from '../utils/sitePath';
 
 const currentPath = Astro.url.pathname;
+const navItems = nav.map((item) => ({ ...item, href: withBase(item.href) }));
 ---
 
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -17,7 +19,7 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
   <div class="container nav-shell">
-    <a class="brand" href="/" aria-label="Matt King Photography home">
+    <a class="brand" href={withBase('/')} aria-label="Matt King Photography home">
       <Image src={logo} alt="Matt King Photography" width={232} loading="eager" />
     </a>
 
@@ -28,7 +30,7 @@ const currentPath = Astro.url.pathname;
 
     <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation" data-menu>
       <ul>
-        {nav.map((item) => (
+        {navItems.map((item) => (
           <li>
             <a
               href={item.href}
@@ -39,7 +41,7 @@ const currentPath = Astro.url.pathname;
           </li>
         ))}
       </ul>
-      <a class="nav-cta" href="/contact/">Plan your session</a>
+      <a class="nav-cta" href={withBase('/contact/')}>Plan your session</a>
     </nav>
   </div>
 </header>

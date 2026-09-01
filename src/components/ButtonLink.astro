@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/sitePath';
+
 interface Props {
   href: string;
   label: string;
@@ -14,10 +16,12 @@ const {
   external = false,
   class: className = '',
 } = Astro.props;
+
+const resolvedHref = external ? href : withBase(href);
 ---
 
 <a
-  href={href}
+  href={resolvedHref}
   class:list={['button', `button--${variant}`, className]}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
